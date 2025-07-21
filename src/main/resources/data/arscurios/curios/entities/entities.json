@@ -1,0 +1,4 @@
+{
+  "entities": ["player"],
+  "slots": ["ars_spell_book"]
+}
