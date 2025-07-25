@@ -22,6 +22,7 @@ public class LivingEntityMixin {
             ItemStack itemStack = ArsCuriosInventoryHelper.getCuriosInventoryItem(livingEntity, extendedHand.getSlotName());
             if (!itemStack.isEmpty()) {
                 cir.setReturnValue(itemStack);
+                cir.cancel();
             }
         }
     }

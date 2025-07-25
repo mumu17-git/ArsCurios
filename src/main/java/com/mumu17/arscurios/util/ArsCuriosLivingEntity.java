@@ -49,7 +49,7 @@ public class ArsCuriosLivingEntity extends LivingEntity {
 
     @Override
     public @NotNull Iterable<ItemStack> getArmorSlots() {
-        return ((Player) (LivingEntity) this).getArmorSlots();
+        return ((LivingEntity) this).getArmorSlots();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ArsCuriosLivingEntity extends LivingEntity {
         if (p_21127_ == null) {
             return ArsCuriosInventoryHelper.getCuriosInventoryItem(this, getPlayerExtendedHand(this).getSlotName());
         }
-        return ((Player) (LivingEntity) this).getItemBySlot(p_21127_);
+        return ((LivingEntity) this).getItemBySlot(p_21127_);
     }
 
     @Override
@@ -66,11 +66,11 @@ public class ArsCuriosLivingEntity extends LivingEntity {
             ArsCuriosInventoryHelper.setCuriosInventoryItem(this, getPlayerExtendedHand(this).getSlotName(), p_21037_);
             return;
         }
-        ((Player) (LivingEntity) this).setItemSlot(p_21036_, p_21037_);
+        ((LivingEntity) this).setItemSlot(p_21036_, p_21037_);
     }
 
     @Override
     public @NotNull HumanoidArm getMainArm() {
-        return ((Player) (LivingEntity) this).getMainArm();
+        return ((LivingEntity) this).getMainArm();
     }
 }

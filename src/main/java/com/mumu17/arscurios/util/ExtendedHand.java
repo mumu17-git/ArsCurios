@@ -19,8 +19,8 @@ public enum ExtendedHand {
         this.vanillaHand = vanillaHand;
     }
 
-    public Optional<InteractionHand> getVanillaHand() {
-        return Optional.ofNullable(vanillaHand);
+    public InteractionHand getVanillaHand() {
+        return this.vanillaHand;
     }
 
     public boolean isCurios() {
