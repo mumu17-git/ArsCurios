@@ -30,6 +30,7 @@ public class ArsCuriosLivingEntity extends LivingEntity {
     }
 
     public static void setPlayerExtendedHand(LivingEntity entity, ExtendedHand hand) {
+        if (entity == null) return;
         CompoundTag tag = entity.getPersistentData();
         if (hand == null) {
             saveExtendedHandToTag(tag, ExtendedHand.MAIN_HAND.getSlotName());
@@ -39,6 +40,7 @@ public class ArsCuriosLivingEntity extends LivingEntity {
     }
 
     public static ExtendedHand getPlayerExtendedHand(LivingEntity entity) {
+        if (entity == null) return ExtendedHand.MAIN_HAND;
         CompoundTag tag = entity.getPersistentData();
         String handName = loadExtendedHandFromTag(tag);
         if (handName == null || handName.isEmpty()) {
