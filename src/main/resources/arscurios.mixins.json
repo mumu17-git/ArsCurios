@@ -1,11 +1,13 @@
 {
-  "required": true,
+  "required": false,
   "minVersion": "0.8",
   "package": "com.mumu17.arscurios.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "arscurios.refmap.json",
+  "plugin": "com.mumu17.arscurios.mixin.ArsCuriosMixinPlugin",
   "mixins": [
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "StackUtilMixin"
   ],
   "client": [
   ],

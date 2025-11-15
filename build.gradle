@@ -6,6 +6,7 @@ buildscript {
             name = "Illusive Soulworks maven"
             url = "https://maven.theillusivec4.top/"
         }
+        maven { url = "https://cursemaven.com" }
         mavenCentral()
     }
     dependencies {
@@ -151,6 +152,8 @@ repositories {
         name = "Illusive Soulworks maven"
         url = "https://maven.theillusivec4.top/"
     }
+
+    maven { url = "https://cursemaven.com" }
 }
 
 dependencies {
@@ -165,6 +168,9 @@ dependencies {
     compileOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api"))
     // Use the full Curios API jar at runtime
     runtimeOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}"))
+
+    implementation fg.deobf("curse.maven:ars-nouveau-401955:${ars_nouveau_version_cf_id}")
+
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -201,7 +207,7 @@ tasks.named('processResources', ProcessResources).configure {
                              loader_version_range: loader_version_range,
                              mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
                              mod_authors         : mod_authors, mod_description: mod_description,
-                             curios_version      : curios_version,]
+                             curios_version      : curios_version, ars_nouveau_version: ars_nouveau_version,]
 
     inputs.properties replaceProperties
 
