@@ -7,8 +7,7 @@ import com.hollingsworth.arsnouveau.common.items.SpellBook;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mumu17.arscurios.util.ArsCuriosInventoryHelper;
-import com.mumu17.arscurios.util.ArsCuriosLivingEntity;
-import com.mumu17.arscurios.util.ExtendedHand;
+import com.mumu17.arscurios.util.InteractionHandUtil;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,8 +32,7 @@ public class StackUtilMixin {
     @ModifyReturnValue(method = "getBookHand", at = @At(value = "RETURN"))
     private static InteractionHand getBookHand(InteractionHand original, @Local(argsOnly = true) Player playerEntity) {
         if (original == null) {
-            ExtendedHand extendedHand = ExtendedHand.getSlotByName(ARS_SPELL_BOOK_SLOT);
-            ArsCuriosLivingEntity.setPlayerExtendedHand(playerEntity, extendedHand);
+            return InteractionHandUtil.getSlotByName(ARS_SPELL_BOOK_SLOT);
         }
         return original;
     }
@@ -42,9 +40,10 @@ public class StackUtilMixin {
     @ModifyReturnValue(method = "getHeldCasterTool(Lnet/minecraft/world/entity/player/Player;Ljava/util/function/Predicate;)Lnet/minecraft/world/InteractionHand;", at = @At(value = "RETURN"))
     private static InteractionHand getHeldCasterTool(InteractionHand original, @Local(argsOnly = true) Player playerEntity) {
         if (original == null) {
-            ExtendedHand extendedHand = ExtendedHand.getSlotByName(ARS_SPELL_BOOK_SLOT);
-            if (ArsCuriosInventoryHelper.getCuriosInventoryItem(playerEntity, extendedHand.getSlotName()).getItem() instanceof SpellBook)
-                ArsCuriosLivingEntity.setPlayerExtendedHand(playerEntity, extendedHand);
+            InteractionHand interactionHand = InteractionHandUtil.getSlotByName(ARS_SPELL_BOOK_SLOT);
+            if (ArsCuriosInventoryHelper.getCuriosInventoryItem(playerEntity, InteractionHandUtil.getSlotName(interactionHand)).getItem() instanceof SpellBook) {
+                return interactionHand;
+            }
         }
         return original;
     }
@@ -52,9 +51,10 @@ public class StackUtilMixin {
     @ModifyReturnValue(method = "getQuickCaster", at = @At(value = "RETURN"))
     private static InteractionHand getQuickCaster(InteractionHand original, @Local(argsOnly = true) Player playerEntity) {
         if (original == null) {
-            ExtendedHand extendedHand = ExtendedHand.getSlotByName(ARS_SPELL_BOOK_SLOT);
-            if (ArsCuriosInventoryHelper.getCuriosInventoryItem(playerEntity, extendedHand.getSlotName()).getItem() instanceof SpellBook)
-                ArsCuriosLivingEntity.setPlayerExtendedHand(playerEntity, extendedHand);
+            InteractionHand interactionHand = InteractionHandUtil.getSlotByName(ARS_SPELL_BOOK_SLOT);
+            if (ArsCuriosInventoryHelper.getCuriosInventoryItem(playerEntity, InteractionHandUtil.getSlotName(interactionHand)).getItem() instanceof SpellBook) {
+                return interactionHand;
+            }
         }
         return original;
     }

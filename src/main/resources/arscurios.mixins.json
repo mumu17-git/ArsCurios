@@ -6,7 +6,10 @@
   "refmap": "arscurios.refmap.json",
   "plugin": "com.mumu17.arscurios.mixin.ArsCuriosMixinPlugin",
   "mixins": [
+    "EquipmentSlotMixin",
+    "InteractionHandMixin",
     "LivingEntityMixin",
+    "MobMixin",
     "StackUtilMixin"
   ],
   "client": [
