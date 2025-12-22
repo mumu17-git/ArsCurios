@@ -37,7 +37,7 @@ public class InteractionHandUtil {
 
     public static InteractionHand getSlotByName(String id) {
         for (InteractionHand hand : InteractionHand.values()) {
-            if (hand != null && SLOT_ID.containsKey(hand.name()) && SLOT_ID.get(hand.name()).equals(id)) {
+            if (hand != null && SLOT_ID.containsKey(hand.name()) && (SLOT_ID.get(hand.name()).equals(id) || hand.name().equals(id))) {
                 return hand;
             }
         }
